@@ -2,6 +2,7 @@ var canvas = document.getElementById("starfield");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+var finalOpacity = 0;
 var context = canvas.getContext("2d");
 var stars = 500;
 var colorrange = [0, 60, 240];
@@ -188,35 +189,59 @@ function drawText() {
     if (frameNumber === 2500) opacity = 0;
 
     // Final Scene – merged Scene 6 + Scene 8 
-    if (frameNumber >= 2600) {
-        context.fillStyle = `rgba(45, 45, 255, ${fourthOpacity})`;
+    // Scene 6 – Long personal paragraph (fade in → fade out)
+if (frameNumber >= 2600 && frameNumber < 3100) {
+    context.fillStyle = `rgba(45, 45, 255, ${fourthOpacity})`;
 
-        drawTextWithLineBreaks(
-            [
-                "I love you Chewy. From the kisses to waking up at night just to make sure",
-                "I’m next to you and cuddling me close, to yapping, fangirling over TOP",
-                "and Niall, and hating on people together—you’re one of the cutest,",
-                "smartest, most deviously adorable girls I know.",
-                "My love for you honestly has no limits."
-            ],
-            canvas.width / 2,
-            canvas.height / 2 + 20,
-            fontSize,
-            lineHeight
-        );
+    drawTextWithLineBreaks(
+        [
+            "I love you Chewy. From the kisses to waking up at night just to make sure",
+            "I’m next to you and cuddling me close, to yapping, fangirling over TOP",
+            "and Niall, and hating on people together, you’re are the cutest,",
+            "smartest, most deviously adorable girl I know.",
+            "My love for you honestly has no limits."
+        ],
+        canvas.width / 2,
+        canvas.height / 2,
+        fontSize,
+        lineHeight
+    );
 
-        fourthOpacity = Math.min(fourthOpacity + 0.008, 1);
-    }
+    fourthOpacity = Math.min(fourthOpacity + 0.01, 1);
+}
 
-    if (frameNumber >= 3000) {
-        context.fillStyle = `rgba(45, 45, 255, ${secondOpacity})`;
-        context.fillText(
-            "Happy Valentine's Day kuttuse",
-            canvas.width / 2,
-            canvas.height / 2 + 150
-        );
-        secondOpacity = Math.min(secondOpacity + 0.01, 1);
-    }
+if (frameNumber >= 3100 && frameNumber < 3400) {
+    context.fillStyle = `rgba(45, 45, 255, ${fourthOpacity})`;
+
+    drawTextWithLineBreaks(
+        [
+            "I love you Chewy. From the kisses to waking up at night just to make sure",
+            "I’m next to you and cuddling me close, to yapping, fangirling over TOP",
+            "and Niall, and hating on people together, you’re are the cutest,",
+            "smartest, most deviously adorable girl I know.",
+            "My love for you honestly has no limits."
+        ],
+        canvas.width / 2,
+        canvas.height / 2,
+        fontSize,
+        lineHeight
+    );
+
+    fourthOpacity = Math.max(fourthOpacity - 0.01, 0);
+}
+
+// Scene 8 – Final message (starts AFTER Scene 6 is gone)
+if (frameNumber >= 3500) {
+    context.fillStyle = `rgba(45, 45, 255, ${finalOpacity})`;
+    context.fillText(
+        "Happy Valentine's Day kuttuse",
+        canvas.width / 2,
+        canvas.height / 2 + 120
+    );
+
+    finalOpacity = Math.min(finalOpacity + 0.01, 1);
+}
+
 
     context.shadowBlur = 0;
 }
