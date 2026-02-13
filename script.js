@@ -188,22 +188,20 @@ function drawText() {
 
     if (frameNumber === 2500) opacity = 0;
 
-    // Final Scene – merged Scene 6 + Scene 8 
-    // Scene 6 – Long personal paragraph (fade in → fade out)
-if (frameNumber >= 2600 && frameNumber < 3100) {
+    // Final Scene – clean, non-overlapping
+if (frameNumber >= 2600 && frameNumber < 3200) {
     context.fillStyle = `rgba(45, 45, 255, ${fourthOpacity})`;
 
     drawTextWithLineBreaks(
         [
             "I love you Chewy. From the kisses to waking up at night just to make sure",
             "I’m next to you and cuddling me close, to yapping, fangirling over TOP",
-            "and Niall, and hating on people together, you’re are the cutest,",
+            "and Niall, and hating on people together — you’re the cutest,",
             "smartest, most deviously adorable girl I know.",
             "My love for you honestly has no limits."
-            "Happy Valentines day kuttuse"
         ],
         canvas.width / 2,
-        canvas.height / 2,
+        canvas.height / 2 - 20,
         fontSize,
         lineHeight
     );
@@ -211,26 +209,39 @@ if (frameNumber >= 2600 && frameNumber < 3100) {
     fourthOpacity = Math.min(fourthOpacity + 0.01, 1);
 }
 
-if (frameNumber >= 3100 && frameNumber < 3400) {
+// Fade OUT paragraph
+if (frameNumber >= 3200 && frameNumber < 3500) {
     context.fillStyle = `rgba(45, 45, 255, ${fourthOpacity})`;
 
     drawTextWithLineBreaks(
         [
             "I love you Chewy. From the kisses to waking up at night just to make sure",
             "I’m next to you and cuddling me close, to yapping, fangirling over TOP",
-            "and Niall, and hating on people together, you’re are the cutest,",
+            "and Niall, and hating on people together — you’re the cutest,",
             "smartest, most deviously adorable girl I know.",
             "My love for you honestly has no limits."
-            "Happy Valentines day kuttuse"
         ],
         canvas.width / 2,
-        canvas.height / 2,
+        canvas.height / 2 - 20,
         fontSize,
         lineHeight
     );
 
     fourthOpacity = Math.max(fourthOpacity - 0.01, 0);
 }
+
+// Final line ONLY after paragraph is gone
+if (frameNumber >= 3600) {
+    context.fillStyle = `rgba(45, 45, 255, ${finalOpacity})`;
+    context.fillText(
+        "Happy Valentine’s Day, kuttuse 💙",
+        canvas.width / 2,
+        canvas.height / 2 + 80
+    );
+
+    finalOpacity = Math.min(finalOpacity + 0.01, 1);
+}
+
 
 
     context.shadowBlur = 0;
