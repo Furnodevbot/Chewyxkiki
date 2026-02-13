@@ -200,6 +200,7 @@ if (frameNumber >= 2600 && frameNumber < 3100) {
             "and Niall, and hating on people together, you’re are the cutest,",
             "smartest, most deviously adorable girl I know.",
             "My love for you honestly has no limits."
+            "Happy Valentines day kuttuse"
         ],
         canvas.width / 2,
         canvas.height / 2,
