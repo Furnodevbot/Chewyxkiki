@@ -220,6 +220,7 @@ if (frameNumber >= 3100 && frameNumber < 3400) {
             "and Niall, and hating on people together, you’re are the cutest,",
             "smartest, most deviously adorable girl I know.",
             "My love for you honestly has no limits."
+            "Happy Valentines day kuttuse"
         ],
         canvas.width / 2,
         canvas.height / 2,
@@ -228,18 +229,6 @@ if (frameNumber >= 3100 && frameNumber < 3400) {
     );
 
     fourthOpacity = Math.max(fourthOpacity - 0.01, 0);
-}
-
-// Scene 8 – Final message (starts AFTER Scene 6 is gone)
-if (frameNumber >= 3500) {
-    context.fillStyle = `rgba(45, 45, 255, ${finalOpacity})`;
-    context.fillText(
-        "Happy Valentine's Day kuttuse",
-        canvas.width / 2,
-        canvas.height / 2 + 120
-    );
-
-    finalOpacity = Math.min(finalOpacity + 0.01, 1);
 }
 
 
