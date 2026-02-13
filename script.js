@@ -24,7 +24,7 @@ for (var i = 0; i < stars; i++) {
 
 var frameNumber = 0;
 var opacity = 0;
-var secondOpacity = 0;
+var secondOpacity = 0; // used for final line
 var thirdOpacity = 0;
 var fourthOpacity = 0;
 
@@ -187,7 +187,7 @@ function drawText() {
 
     if (frameNumber === 2500) opacity = 0;
 
-    // Scene 6 – Long personal paragraph ❤️
+    // Final Scene – merged Scene 6 + Scene 8 
     if (frameNumber >= 2600) {
         context.fillStyle = `rgba(45, 45, 255, ${fourthOpacity})`;
 
@@ -200,7 +200,7 @@ function drawText() {
                 "My love for you honestly has no limits."
             ],
             canvas.width / 2,
-            canvas.height / 2 + 40,
+            canvas.height / 2 + 20,
             fontSize,
             lineHeight
         );
@@ -208,22 +208,14 @@ function drawText() {
         fourthOpacity = Math.min(fourthOpacity + 0.008, 1);
     }
 
-    // Scene 7
-    if (frameNumber >= 3150) {
+    if (frameNumber >= 3000) {
         context.fillStyle = `rgba(45, 45, 255, ${secondOpacity})`;
         context.fillText(
-            "and I can't wait to spend all the time in the world to share that love with you!",
+            "Happy Valentine's Day kuttuse",
             canvas.width / 2,
-            canvas.height / 2 + 120
+            canvas.height / 2 + 150
         );
-        secondOpacity += 0.01;
-    }
-
-    // Scene 8 – Final
-    if (frameNumber >= 3400) {
-        context.fillStyle = `rgba(45, 45, 255, ${thirdOpacity})`;
-        context.fillText("Happy Valentine's Day kuttuse", canvas.width / 2, canvas.height / 2 + 180);
-        thirdOpacity += 0.01;
+        secondOpacity = Math.min(secondOpacity + 0.01, 1);
     }
 
     context.shadowBlur = 0;
